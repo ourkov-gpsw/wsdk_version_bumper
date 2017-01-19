@@ -87,5 +87,24 @@ def bumpPointVersion(branch, ticket):
 	pushFeatureToOrigin(ticket, newVersion)
 	return "bumped point version to %s on new branch feature/%s.  Need to merge PR to %s" % (newVersion, ticket, branch)
 
+helpStr = '''Need to specify version to bump (minor or point), src branch, and ticket
+
+    example:  /bumpminor/develop/CAL-1529
+
+         or:  /bumppoint/wsdk0.15/CAL-1530
+'''
+
+@app.route("/")
+def showForm():
+	return "FIXME: need to implement a web form"
+
+@app.route("/bumppoint/<branch>")
+def pointHelp(branch):
+	return helpStr
+
+@app.route("/bumpminor/<branch>")
+def minorHelp(branch):
+	return helpStr
+
 app.run()
 
